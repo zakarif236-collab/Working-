@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="build\windows\x64\cmakefiles\4.3.1-msvc1\compileridcxx\CMakeCXXCompilerId.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="consoleapplication1\consoleapplication1\ConsoleApplication1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="consoleapplication2\consoleapplication2\ConsoleApplication2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\consoleapplication1\consoleapplication1\ConsoleApplication1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="linux\flutter\generated_plugin_registrant.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="linux\runner\main.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="linux\runner\my_application.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\flutter\generated_plugin_registrant.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\flutter\ephemeral\cpp_client_wrapper\core_implementations.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\flutter\ephemeral\cpp_client_wrapper\engine_method_result.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\flutter\ephemeral\cpp_client_wrapper\flutter_engine.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\flutter\ephemeral\cpp_client_wrapper\flutter_view_controller.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\flutter\ephemeral\cpp_client_wrapper\plugin_registrar.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\flutter\ephemeral\cpp_client_wrapper\standard_codec.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\runner\flutter_window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\runner\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\runner\utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\runner\win32_window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ios\runner\GeneratedPluginRegistrant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ios\runner\Runner-Bridging-Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="linux\flutter\generated_plugin_registrant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="linux\runner\my_application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\generated_plugin_registrant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\flutter_export.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\flutter_messenger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\flutter_plugin_registrar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\flutter_texture_registrar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\flutter_windows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\binary_messenger_impl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\byte_buffer_streams.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\texture_registrar_impl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\basic_message_channel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\binary_messenger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\byte_streams.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\dart_project.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\encodable_value.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\engine_method_result.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\event_channel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\event_sink.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\event_stream_handler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\event_stream_handler_functions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\flutter_engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\flutter_view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\flutter_view_controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\message_codec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\method_call.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\method_channel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\method_codec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\method_result.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\method_result_functions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\plugin_registrar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\plugin_registrar_windows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\plugin_registry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\standard_codec_serializer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\standard_message_codec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\standard_method_codec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\flutter\ephemeral\cpp_client_wrapper\include\flutter\texture_registrar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\runner\flutter_window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\runner\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\runner\utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\runner\win32_window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".dart_tool\chrome-device\default\sync data\Nigori.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="build\flutter_assets\AssetManifest.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="build\windows\x64\cmakefiles\4.3.1-msvc1\CMakeDetermineCompilerABI_CXX.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="web\index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="windows\runner\Runner.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
