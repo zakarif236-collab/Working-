@@ -7,6 +7,7 @@ import 'package:my_app/models/workout_models.dart';
 import 'package:my_app/services/cue_service.dart';
 import 'package:my_app/services/music_service.dart';
 import 'package:my_app/services/settings_service.dart';
+import 'package:my_app/services/sound_service.dart';
 import 'package:my_app/widgets/circular_countdown.dart';
 import 'package:my_app/widgets/workout_timeline.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -23,6 +24,7 @@ class _WorkoutTimerPageState extends State<WorkoutTimerPage>
   late final WorkoutController _controller;
   late final MusicService _musicService;
   late final CueService _cueService;
+  late final SoundService _soundService;
   late final SettingsService _settingsService;
   late final AnimationController _pulseController;
   Timer? _settingsPersistDebounce;
@@ -45,6 +47,7 @@ class _WorkoutTimerPageState extends State<WorkoutTimerPage>
     _controller = WorkoutController();
     _musicService = MusicService();
     _cueService = CueService();
+    _soundService = SoundService();
     _settingsService = SettingsService();
     _voiceCueEnabled = _cueService.supportsVoiceCues;
     _pulseController = AnimationController(
@@ -70,6 +73,7 @@ class _WorkoutTimerPageState extends State<WorkoutTimerPage>
     _controller.dispose();
     _pulseController.dispose();
     _cueService.dispose();
+    _soundService.dispose();
     _musicService.dispose();
     super.dispose();
   }
@@ -168,15 +172,25 @@ class _WorkoutTimerPageState extends State<WorkoutTimerPage>
 
     if (_controller.isRunning && remaining != _lastAnnouncedSeconds) {
       _lastAnnouncedSeconds = remaining;
-      if (remaining > 0 && remaining <= 3) {
+      // Countdown from 5 to 1
+      if (remaining > 0 && remaining <= 5) {
         if (_hapticCueEnabled) {
           await HapticFeedback.selectionClick();
         }
+        // Speak the countdown if voice is enabled
         if (canSpeak) {
           try {
             await _cueService.speakCount(remaining);
           } on CueServiceException catch (e) {
             _showMessage(e.message);
+          }
+        }
+        // Play beep sound on 3, 2, 1 (always, even if voice is disabled)
+        if (remaining <= 3) {
+          try {
+            await _soundService.playCountdownBeep();
+          } catch (e) {
+            // Silently fail for beep sound
           }
         }
       }
@@ -186,6 +200,12 @@ class _WorkoutTimerPageState extends State<WorkoutTimerPage>
       _didAnnounceCompletion = true;
       if (_hapticCueEnabled) {
         await HapticFeedback.heavyImpact();
+      }
+      // Play completion beep sound (always, regardless of voice setting)
+      try {
+        await _soundService.playCompletionBeep();
+      } catch (e) {
+        // Silently fail for completion beep
       }
       if (canSpeak) {
         try {

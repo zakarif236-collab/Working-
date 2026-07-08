@@ -44,8 +44,9 @@ class CueService {
     await tts.speak('$phaseLabel phase');
   }
 
+  /// Speak countdown - handles 5, 4, 3, 2, 1 countdown
   Future<void> speakCount(int seconds) async {
-    if (seconds < 1 || _tts == null) {
+    if (seconds < 1 || seconds > 5 || _tts == null) {
       return;
     }
 
