@@ -171,10 +171,13 @@ class _WorkoutTimerPageState extends State<WorkoutTimerPage>
     if (_controller.isRunning && remaining != _lastAnnouncedSeconds) {
       _lastAnnouncedSeconds = remaining;
       if (remaining > 0 && remaining <= 5) {
-        if (_hapticCueEnabled) {
+        // Stronger haptic feedback for beep effect on 3, 2, 1
+        if (remaining <= 3 && _hapticCueEnabled) {
+          await HapticFeedback.lightImpact();
+        } else if (_hapticCueEnabled) {
           await HapticFeedback.selectionClick();
         }
-        // Play countdown beep sounds always, voice only if enabled
+        // Play voice count if enabled
         try {
           await _cueService.speakCount(remaining, shouldSpeak: canSpeak);
         } on CueServiceException catch (e) {
