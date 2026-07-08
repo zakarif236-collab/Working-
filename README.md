@@ -1,17 +1,48 @@
 # my_app
 
-A new Flutter project.
+Immersive workout timer built with Flutter.
 
-## Getting Started
+## Run Targets
 
-This project is a starting point for a Flutter application.
+Run the app from `lib/main.dart`. The app starts on a home screen and navigates into the workout timer from there.
 
-A few resources to get you started if this is your first Flutter project:
+### Windows
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+Prerequisites for a clean Windows setup:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Enable Windows Developer Mode so Flutter plugins can create symlinks.
+- Install the NuGet CLI, for example with `winget install --id Microsoft.NuGet`.
+- Use Visual Studio with desktop C++ support.
+
+Run the app with:
+
+```powershell
+flutter run -d windows
+```
+
+Notes:
+
+- The Windows CMake setup is pinned to build into the local Flutter output folder rather than `C:\Program Files`.
+- Voice cues are disabled on Windows because the current `flutter_tts` Windows plugin path is unstable in this project.
+
+### Android Emulator
+
+This workspace is configured to use a Pixel 5 emulator with the id `Pixel_5`.
+
+Launch it with:
+
+```powershell
+flutter emulators --launch Pixel_5
+```
+
+Then confirm it is online:
+
+```powershell
+flutter devices
+```
+
+When the emulator is listed as a connected Android device, run:
+
+```powershell
+flutter run -d emulator-5554
+```

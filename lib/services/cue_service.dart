@@ -1,11 +1,17 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 class CueService {
-  CueService() : _tts = FlutterTts();
+  CueService() : _tts = _supportsVoiceCues ? FlutterTts() : null;
 
-  final FlutterTts _tts;
+  static bool get _supportsVoiceCues =>
+      !kIsWeb && defaultTargetPlatform != TargetPlatform.windows;
+
+  final FlutterTts? _tts;
   double _volume = 1.0;
   double _speechRate = 0.52;
+
+  bool get supportsVoiceCues => _supportsVoiceCues;
 
   Future<void> updateSettings({double? volume, double? speechRate}) async {
     if (volume != null) {
@@ -15,50 +21,71 @@ class CueService {
       _speechRate = speechRate.clamp(0.2, 0.8);
     }
 
+    if (_tts == null) {
+      return;
+    }
+
+    final tts = _tts;
+
     try {
-      await _tts.setVolume(_volume);
-      await _tts.setSpeechRate(_speechRate);
+      await tts.setVolume(_volume);
+      await tts.setSpeechRate(_speechRate);
     } catch (e) {
       throw CueServiceException('Unable to apply voice cue settings: $e');
     }
   }
 
   Future<void> announcePhase(String phaseLabel) async {
+    if (_tts == null) {
+      return;
+    }
+    final tts = _tts;
     await _configureTts();
-    await _tts.speak('$phaseLabel phase');
+    await tts.speak('$phaseLabel phase');
   }
 
   Future<void> speakCount(int seconds) async {
-    if (seconds < 1) {
+    if (seconds < 1 || _tts == null) {
       return;
     }
 
+    final tts = _tts;
     await _configureTts();
-    await _tts.speak('$seconds');
+    await tts.speak('$seconds');
   }
 
   Future<void> announceCompletion() async {
+    if (_tts == null) {
+      return;
+    }
+    final tts = _tts;
     await _configureTts();
-    await _tts.speak('Workout complete. Great job.');
+    await tts.speak('Workout complete. Great job.');
   }
 
   Future<void> _configureTts() async {
+    if (_tts == null) {
+      return;
+    }
+
+    final tts = _tts;
+
     try {
-      await _tts.setVolume(_volume);
-      await _tts.setPitch(1.05);
-      await _tts.setSpeechRate(_speechRate);
-      await _tts.awaitSpeakCompletion(true);
+      await tts.setVolume(_volume);
+      await tts.setPitch(1.05);
+      await tts.setSpeechRate(_speechRate);
+      await tts.awaitSpeakCompletion(true);
     } catch (e) {
       throw CueServiceException('Voice cues are unavailable on this device: $e');
     }
   }
 
   Future<void> stop() async {
-    await _tts.stop();
+    await _tts?.stop();
   }
 
   Future<void> dispose() async {
-    await _tts.stop();
+    await _tts?.stop();
   }
 }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/pages/first_page.dart';
 import 'package:my_app/pages/workout_timer_page.dart';
 
 void main() {
@@ -22,7 +23,10 @@ class MyApp extends StatelessWidget {
       theme: base.copyWith(
         scaffoldBackgroundColor: const Color(0xFF0D121C),
       ),
-      home: const WorkoutTimerPage(),
+      routes: {
+        '/workout': (_) => const WorkoutTimerPage(),
+      },
+      home: const FirstPage(),
     );
   }
 }

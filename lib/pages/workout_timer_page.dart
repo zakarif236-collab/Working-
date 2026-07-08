@@ -46,6 +46,7 @@ class _WorkoutTimerPageState extends State<WorkoutTimerPage>
     _musicService = MusicService();
     _cueService = CueService();
     _settingsService = SettingsService();
+    _voiceCueEnabled = _cueService.supportsVoiceCues;
     _pulseController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 800),
@@ -108,7 +109,7 @@ class _WorkoutTimerPageState extends State<WorkoutTimerPage>
 
       setState(() {
         _selectedIntensity = saved.config.intensity;
-        _voiceCueEnabled = saved.voiceCueEnabled;
+        _voiceCueEnabled = _cueService.supportsVoiceCues && saved.voiceCueEnabled;
         _hapticCueEnabled = saved.hapticCueEnabled;
         _muteVoiceWhileMusicPlays = saved.muteVoiceWhileMusicPlays;
         _voiceCueVolume = saved.voiceCueVolume;
@@ -623,8 +624,8 @@ class _ConfigPanel extends StatelessWidget {
             label: 'Sets: ${config.sets}',
             value: config.sets.toDouble(),
             min: 1,
-            max: 10,
-            divisions: 9,
+            max: 50,
+            divisions: 49,
             onChanged: (v) => onChanged(sets: v.round()),
           ),
           _LabeledSlider(

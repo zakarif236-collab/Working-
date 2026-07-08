@@ -51,27 +51,39 @@ subprojects {
                 .getMethod("setSourceCompatibility", JavaVersion::class.java)
             val setTargetCompatibility = compileOptions.javaClass
                 .getMethod("setTargetCompatibility", JavaVersion::class.java)
-            setSourceCompatibility.invoke(compileOptions, JavaVersion.VERSION_11)
-            setTargetCompatibility.invoke(compileOptions, JavaVersion.VERSION_11)
+            setSourceCompatibility.invoke(compileOptions, JavaVersion.VERSION_17)
+            setTargetCompatibility.invoke(compileOptions, JavaVersion.VERSION_17)
         } catch (_: Throwable) {
             // Ignore if this Android plugin version does not expose namespace APIs.
         }
     }
 
     tasks.withType(JavaCompile::class.java).configureEach {
-        sourceCompatibility = JavaVersion.VERSION_11.toString()
-        targetCompatibility = JavaVersion.VERSION_11.toString()
+        sourceCompatibility = JavaVersion.VERSION_17.toString()
+        targetCompatibility = JavaVersion.VERSION_17.toString()
     }
 
     tasks.withType(KotlinCompile::class.java).configureEach {
         compilerOptions {
-            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
         }
     }
 }
 
 subprojects {
     project.evaluationDependsOn(":app")
+}
+
+subprojects {
+    tasks.withType(JavaCompile::class.java).configureEach {
+        sourceCompatibility = JavaVersion.VERSION_17.toString()
+        targetCompatibility = JavaVersion.VERSION_17.toString()
+    }
+    tasks.withType(KotlinCompile::class.java).configureEach {
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+        }
+    }
 }
 
 tasks.register<Delete>("clean") {
