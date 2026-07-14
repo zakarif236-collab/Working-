@@ -12,9 +12,11 @@ class MusicService {
   final AudioPlayer _player;
 
   SongModel? _currentSong;
+  double _playbackSpeed = 1.0;
 
   SongModel? get currentSong => _currentSong;
   AudioPlayer get player => _player;
+  double get playbackSpeed => _playbackSpeed;
 
   Future<void> initialize() async {
     if (!Platform.isAndroid) {
@@ -74,10 +76,28 @@ class MusicService {
 
     try {
       await _player.setAudioSource(AudioSource.uri(Uri.parse(uri)));
+      _playbackSpeed = 1.0;
+      await _player.setSpeed(_playbackSpeed);
       await _player.play();
       _currentSong = song;
     } catch (e) {
       throw MusicServiceException('Playback failed: $e');
+    }
+  }
+
+  Future<void> setPlaybackSpeed(double speed) async {
+    if (_currentSong == null) {
+      throw const MusicServiceException(
+        'Pick a song first so phase music profiles can be applied.',
+      );
+    }
+
+    final next = speed.clamp(0.6, 1.4);
+    try {
+      await _player.setSpeed(next);
+      _playbackSpeed = next;
+    } catch (e) {
+      throw MusicServiceException('Unable to apply music profile speed: $e');
     }
   }
 
@@ -98,6 +118,7 @@ class MusicService {
 
   Future<void> stop() async {
     await _player.stop();
+    _playbackSpeed = 1.0;
   }
 
   Future<void> dispose() async {

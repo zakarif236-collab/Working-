@@ -38,17 +38,28 @@ dependencies:
   just_audio: ^0.10.5
   on_audio_query: ^2.9.0
   shared_preferences: ^2.5.3
+  flutter_local_notifications: ^19.4.0
+  image_picker: ^1.1.2
+  path_provider: ^2.1.5
+  share_plus: ^10.0.2
+  video_player: ^2.9.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "logo.png"
+
+dependency_overrides:
+  flutter_tts:
+    path: third_party/flutter_tts
+  on_audio_query_android:
+    path: third_party/on_audio_query_android
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -60,6 +71,10 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  assets:
+    - assets/exercises/images/
+    - assets/exercises/videos/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

@@ -43,6 +43,27 @@ subprojects {
                 setNamespace.invoke(androidExt, fallback)
             }
 
+            // Some plugins pin compileSdk to 33, but newer AndroidX artifacts require 34+.
+            // Override library modules to avoid AAR metadata failures at build time.
+            val minCompileSdk = 34
+            val getCompileSdk = androidExt.javaClass.methods.firstOrNull { it.name == "getCompileSdk" && it.parameterCount == 0 }
+            val setCompileSdk = androidExt.javaClass.methods.firstOrNull { it.name == "setCompileSdk" && it.parameterCount == 1 }
+            if (getCompileSdk != null && setCompileSdk != null) {
+                val currentCompileSdk = (getCompileSdk.invoke(androidExt) as? Int) ?: 0
+                if (currentCompileSdk in 1 until minCompileSdk) {
+                    setCompileSdk.invoke(androidExt, minCompileSdk)
+                }
+            } else {
+                val getCompileSdkVersion = androidExt.javaClass.methods.firstOrNull { it.name == "getCompileSdkVersion" && it.parameterCount == 0 }
+                val setCompileSdkVersion = androidExt.javaClass.methods.firstOrNull { it.name == "setCompileSdkVersion" && it.parameterCount == 1 }
+                if (getCompileSdkVersion != null && setCompileSdkVersion != null) {
+                    val current = getCompileSdkVersion.invoke(androidExt)?.toString()?.filter { it.isDigit() }?.toIntOrNull() ?: 0
+                    if (current in 1 until minCompileSdk) {
+                        setCompileSdkVersion.invoke(androidExt, minCompileSdk.toString())
+                    }
+                }
+            }
+
             // Some older plugins are not aligned with newer AGP/Kotlin defaults.
             // Keep Java/Kotlin targets consistent to avoid JVM target validation failures.
             val getCompileOptions = androidExt.javaClass.getMethod("getCompileOptions")

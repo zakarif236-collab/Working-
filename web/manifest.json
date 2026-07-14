@@ -1,6 +1,6 @@
 {
-    "name": "my_app",
-    "short_name": "my_app",
+    "name": "TrainFlow",
+    "short_name": "TrainFlow",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
